@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 class Straight:
     def __init__(self, m:float=1, b:float=0):
@@ -10,6 +11,9 @@ class Straight:
         y = self.m * x + self.b
         ax.plot(x, y, 'b-', linewidth=2, label=f'y = {self.m}x + {self.b}')
 
-
     def __str__(self):
         return f"m = {self.m}, b = {self.b}"
+    
+class StraightND:
+    def __init__(self, m:list[float] = [1], b:float=1):
+        pass
