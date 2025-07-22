@@ -16,4 +16,13 @@ class Straight:
     
 class StraightND:
     def __init__(self, m:list[float] = [1], b:float=1):
-        pass
+        self.m = m
+        self.b = b
+
+    def __str__(self):
+        str = ""
+        counter = 1
+        for n in self.m:
+            str += "{n} * X{counter} "
+            counter += 1
+        return f"Dimensions: {len(self.m)} \nY = {str} + {self.b}"

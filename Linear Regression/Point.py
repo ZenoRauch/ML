@@ -5,5 +5,5 @@ class Point:
 
 
 class PointND:
-    def __init__(self, coordinates:list[float]):
+    def __init__(self, coordinates:list[float]=[1,1]):
         self.coordinates = coordinates

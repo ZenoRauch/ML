@@ -1,15 +1,15 @@
-from Point import Point 
-from Straight import Straight
+from Point import Point, PointND
+from Straight import Straight, StraightND
 from Drawer import Drawer
 
-def simple_regression(point_a:Point, point_b:Point):
+def simple_regression_2d(point_a:Point, point_b:Point):
     reg_straight = Straight()
     reg_straight.m = (point_a.Y - point_b.Y) / (point_a.X - point_b.X)
     reg_straight.b = point_a.Y - (point_a.X * reg_straight.m)
     print(reg_straight)
     Drawer().print(reg_straight, [point_a, point_b])
 
-def regression(points:list[Point]):
+def regression_2d(points:list[Point]):
     straight = Straight()
     x_total = 0
     y_total = 0 
@@ -29,6 +29,10 @@ def regression(points:list[Point]):
     Drawer().print(straight, points)
 
 
+def regression(points:list[PointND]):
+    straight = StraightND()
+    pass
+
 print("1 - 2D 2 points")
 print("2 - 2D 5 points")
 choice = int(input("Enter Choice -> "))
@@ -39,7 +43,7 @@ match choice:
         y_a = float(input("Y-Coordinate of point A -> "))
         x_b = float(input("X-Coordinate of point B -> "))
         y_b = float(input("Y-Coordinate of point B -> "))
-        simple_regression(Point(x_a, y_a), Point(x_b, y_b))
+        simple_regression_2d(Point(x_a, y_a), Point(x_b, y_b))
     case 2:
         points = []
         for i in range(5):
@@ -47,7 +51,7 @@ match choice:
                 float(input(f"X-Coordinate of point {i+1} -> ")),
                 float(input(f"Y-Coordinate of point {i+1} -> ")))
             )
-        regression(points)
+        regression_2d(points)
         pass
     case 4:
         pass
