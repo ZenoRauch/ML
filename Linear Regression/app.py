@@ -29,12 +29,57 @@ def regression_2d(points:list[Point]):
     Drawer().print(straight, points)
 
 
+def getSums(points:list[PointND]) -> list:
+    dimensions = len(points[0].coordinates)
+    variables_sums = []
+    first = True
+    # Calcualting n maxes
+    for point in points:
+        if first: 
+            for i in range(dimensions):
+                variables_sums.append(point.coordinates[i])
+            first = False
+        else:
+            for i in range(dimensions):
+                variables_sums[i] += point.coordinates[i]
+    return variables_sums
+
+def getSquaredSums(sums:list[float]) -> list:
+    """
+    Calculating sum of squares
+    [
+          x1        x2        x3        ...   xn
+    x1   [x1 * x1] [x1 * x2] [x1 * x3] [...] [x1 * xn]
+    x2   [x2 * x1] [x2 * x2] [x2 * x3] [...] [x2 * xn]
+    x3   [x3 * x1] [x3 * x2] [x3 * x3] [...] [x3 * xn]
+    ...  [...]     [...]     [...]     [...] [...]
+    xn   [xn * x1] [xn * x2] [xn * x3] [...] [xn * xn]
+    ]
+    """
+    returnlist = []
+    for i in range(len(sums)):
+        if i == 0:
+            for y in range(len(sums)):
+                returnlist.append([sums[i]*sums[y]])
+        else:
+            for y in range(len(sums)):
+                returnlist[y].append(sums[i]*sums[y])
+    return returnlist
+
 def regression(points:list[PointND]):
     straight = StraightND()
-    pass
+    n = len(points)
+    dimensions = len(points[0].coordinates)
+    variables_sums = getSums(points)
+    print(variables_sums)
+    variables_squaresums = getSquaredSums(variables_sums)
+    print(variables_squaresums)
+
+    
 
 print("1 - 2D 2 points")
 print("2 - 2D 5 points")
+print("3 - 3D 10 points")
 choice = int(input("Enter Choice -> "))
 
 match choice:
@@ -53,7 +98,20 @@ match choice:
             )
         regression_2d(points)
         pass
-    case 4:
+    case 3:
+        points = [
+            PointND([1, 1, 10]),
+            PointND([2, 0, 9]),
+            PointND([0, 2, 11]),
+            PointND([3, 1, 14]),
+            PointND([4, 2, 19]),
+            PointND([5, 0, 15]),
+            PointND([1, 3, 16]),
+            PointND([2, 2, 15]),
+            PointND([6, 1, 20]),
+            PointND([0, 0, 5]),
+        ]
+        regression(points)
         pass
     case 5:
         pass

@@ -75,9 +75,30 @@ def regression(points:list[Point]):
     print(straight)
     Drawer().print(straight, points)
 ```
-## 3D Two Points
 
 ## 3d Multiple Points
+
+For this part, I needed to consult ChatGPT and Calude.ai due to me not properly understanding, how to calculate a multidimensional regression. On the top level, we work with vectors. I still need to understand the math behind calculating and scaling the following methods:
+
+```Python
+# Input in form of vectors
+[
+    [x1, z1, y1],
+    [x2, z2, y2],
+    [x3, z3, y3],
+    [x4, z4, y4]
+]
+# Achiveable information in form of a vector
+[
+    m1,
+    m2,
+    b
+]
+# Final equation
+# the number 1 on first_array[2] is for the y-intercept b => 1*b equals b
+[x1, z1, 1] * [m1, m2, b] = y1
+```
+I thought, that I simple can use the concept of using Delta Y over Delta X. However, I can use the principle of squares of sum from the 2-dimensional regression. Therefore I started with the matrix to calculate all sum of squares to ... to ... to do what? Because someone told me that? At the moment, I still don't understand the math quite yet, but I am working on it.
 
 ## n-D Multiple Points - Final Form
 

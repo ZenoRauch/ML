@@ -1,3 +1,5 @@
+from Point import Point, PointND
+
 class Util:
     def find_range(self, points:list[Point]):
         min_x = 0
